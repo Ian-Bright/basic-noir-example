@@ -14,8 +14,8 @@ async function generateSolidityVerifier() {
     try {
         let compiled_program = compile(resolve(__dirname, '../circuits/src/main.nr'));
         acir = compiled_program.circuit;
-    } catch (e : any ) {
-        let acirByteArray = path_to_uint8array(path.resolve(__dirname, `../circuits/build/${process.argv[2]}.acir`));
+    } catch (e: any) {
+        let acirByteArray = path_to_uint8array(path.resolve(__dirname, `../circuits/build/p.acir`));
         acir = acir_from_bytes(acirByteArray);
     }
     console.log("Setting up generic verifier...");
@@ -29,7 +29,7 @@ async function generateSolidityVerifier() {
 
 function syncWriteFile(filename: string, data: any) {
     writeFileSync(join(__dirname, filename), data, {
-      flag: 'w',
+        flag: 'w',
     });
 }
 

@@ -10,13 +10,11 @@ function path_to_uint8array(path: string) {
 }
 
 async function generateProof() {
-    let acirByteArray = path_to_uint8array(path.resolve(__dirname, `../circuits/build/${process.argv[2]}.acir`));
+    let acirByteArray = path_to_uint8array(path.resolve(__dirname, `../circuits/build/test.acir`));
     let acir = acir_from_bytes(acirByteArray);
 
     let abi = {
-        x : 1,
-        y : 2,
-        return : 3
+        creditScore: 720
     }
 
     console.log("Setting up generic prover and verifier...");

@@ -9,13 +9,11 @@ function path_to_uint8array(path: string) {
 }
 
 async function generateProof() {
-    let acirByteArray = path_to_uint8array(path.resolve(__dirname, `../../circuits/build/${process.argv[2]}.acir`));
+    let acirByteArray = path_to_uint8array(path.resolve(__dirname, `../../circuits/build/test.acir`));
     let acir = acir_from_bytes(acirByteArray);
 
     let abi = {
-        x : parseInt(process.argv[3]),
-        y : parseInt(process.argv[4]),
-        return : parseInt(process.argv[5])
+        creditScore: parseInt(process.argv[3]),
     }
 
     let [prover, verifier] = await setup_generic_prover_and_verifier(acir);
